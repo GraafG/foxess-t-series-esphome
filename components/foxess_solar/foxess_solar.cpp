@@ -173,9 +173,11 @@ void FoxessSolar::parse_message() {
   const std::size_t total_len = this->buffer_end + 1;
   auto &msg = this->input_buffer;
 
-  if (total_len != 163) {
-    ESP_LOGW(TAG, "unexpected message length: %u (expected 163)", (unsigned) total_len);
+  if (total_len < MIN_SUPPORTED_MESSAGE_LENGTH) {
+    ESP_LOGE(TAG, "message too short: %u (need at least %u)",
+             (unsigned) total_len, (unsigned) MIN_SUPPORTED_MESSAGE_LENGTH);
     this->status_set_warning();
+    return;
   }
 
   // powers

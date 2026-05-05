@@ -39,7 +39,7 @@ esphome/
 
 ### 1. secrets.yaml
 
-Create `secrets.yaml` with these keys (not committed to git):
+Create (or update) `secrets.yaml` with these keys:
 
 ```yaml
 wifi_ssid: "your-wifi"
@@ -131,8 +131,8 @@ Check RS485 wiring polarity (swap A/B if needed). Verify GPIO4 is your DE/RE pin
 **CRC errors in logs**  
 Cable too long (>4 m can be marginal). Try ferrite bead on RS485 cable.
 
-**Unexpected message length warning (expected 163)**  
-Older inverter firmware sends a shorter frame. The component will still parse what it can.
+**Message too short warning**  
+Your inverter sent a frame shorter than the known T-Series sensor offsets. Capture a verbose UART log before trusting the parsed values.
 
 **HA Energy Dashboard shows wrong values**  
 Ensure "T-Series Generation Total" is added as the solar source (not "Today Yield" — that resets daily).

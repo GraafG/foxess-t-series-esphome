@@ -62,6 +62,8 @@ struct MsgOffset {
   static constexpr std::size_t ERROR_BLOCK_END   = 157; // exclusive
 };
 
+static constexpr std::size_t MIN_SUPPORTED_MESSAGE_LENGTH = MsgOffset::ERROR_BLOCK_END;
+
 class FoxessSolar : public PollingComponent, public uart::UARTDevice {
  public:
   void setup() override;
