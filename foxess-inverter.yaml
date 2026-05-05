@@ -12,6 +12,11 @@ external_components:
   - source:
       type: local
       path: components
+  # Alternative: reference directly from GitHub (no local clone needed)
+  # - source:
+  #     type: git
+  #     url: https://github.com/GraafG/foxess-t-series-esphome
+  #     ref: main
 
 # Enable logging — WARN level for production (reduces HA log noise)
 logger:
